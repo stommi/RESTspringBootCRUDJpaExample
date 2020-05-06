@@ -51,4 +51,15 @@ public class RestKontrolleri {
     public Optional<Huonekalut> getHuonekaluById(@PathVariable(name = "id", required = true) Integer id) {
         return hr.findById(id);
     }
+
+    @GetMapping("/punaisethuonekalut")
+    public Iterable<Huonekalut> getPunaisetHuonekalut() {
+        return hr.getPunaisetHuonekalut();
+    }
+
+    @GetMapping("/huonekalutmaarittain{maara}")
+    public Iterable<Huonekalut> getHuonekalutByMaara(@RequestParam(name="maara", required=true) Integer maara) {
+        return hr.getHuonekalutByMaara(maara);
+    }
+
 }
