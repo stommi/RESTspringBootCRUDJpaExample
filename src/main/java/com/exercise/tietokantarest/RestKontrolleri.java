@@ -19,14 +19,22 @@ public class RestKontrolleri {
 
     @PostMapping("/huonekalut")
     public String postNewHuonekalu(@RequestBody Huonekalut huonekalut) {
-        hr.save(huonekalut);
-        return "Uusi huonekalu lisätty onnistuneesti.";
+        try {
+            hr.save(huonekalut);
+            return "Uusi huonekalu lisätty onnistuneesti.";
+        } catch (Exception e) {
+            System.err.println(e);
+        } return "Huonekalun lisäys epäonnistui. Syötithän nimen.";
     }
 
     @DeleteMapping("/huonekalut/{id}")
     public String deleteHuonekalu(@PathVariable(name = "id", required = true) Integer id) {
-        hr.deleteById(id);
-        return "Huonekalu poistettu onnistuneesti.";
+        try {
+            hr.deleteById(id);
+            return "Huonekalu poistettu onnistuneesti.";
+        } catch (Exception e) {
+            System.err.println(e);
+        } return "Id:tä " + id + " ei löydy.";
     }
 
     @PutMapping("/huonekalut/{id}")
