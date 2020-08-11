@@ -10,4 +10,7 @@ public interface HuonekaluRepository extends PagingAndSortingRepository<Huonekal
 
     @Query("SELECT h.nimi, h.vari FROM Huonekalut h WHERE h.lkm = :maara")
     Iterable<Huonekalut> getHuonekalutByMaara(@Param("maara") Integer maara);
+
+    @Query("SELECT h.nimi, h.vari FROM Huonekalut h WHERE h.lkm = 4 AND h.vari = 'ruskea' ORDER BY h.nimi")
+    Iterable<Huonekalut> getRuskeatHuonekaluryhmat();
 }

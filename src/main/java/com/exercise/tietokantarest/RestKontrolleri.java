@@ -70,4 +70,9 @@ public class RestKontrolleri {
         return hr.getHuonekalutByMaara(maara);
     }
 
+    @GetMapping("/ruskeathuonekaluryhmat")
+    public Iterable<Huonekalut> getRuskeatHuonekaluryhmat() {
+        return hr.getRuskeatHuonekaluryhmat();
+    }
+
 }
